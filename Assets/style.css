@@ -1,3 +1,4 @@
+/* Given styling for assignment */
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -69,3 +70,21 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+/* Styling to space */
+/* tr {
+  display: flex;
+  align-content: stretch;
+}
+
+tr td div {
+  flex: 1;
+}
+
+tr td textarea {
+  flex: 8;
+}
+
+tr td button {
+  flex: 1;
+} */
