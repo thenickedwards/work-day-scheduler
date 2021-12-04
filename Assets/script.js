@@ -4,6 +4,7 @@ var timeBlocks = $('#timeblocks');
 var currentHour = parseInt(moment().format("H"));
 var currentDay = $('#currentDay');
 var saveIcon = `<i class="fas fa-save"></i>`
+var saveButton = $('.saveBtn');
 
 // Display current day and time
 function displayDayTime() {
@@ -25,7 +26,7 @@ function createPlanner() {
                     <textarea name="" id="" class="description col-10"></textarea>
                     <button type="button" class="btn btn-primary col-1 saveBtn">${saveIcon}</button>
                 </div>`
-
+            
             $('#timeblocks').append(hourRow)
         } else {
             var hourRow = `
@@ -54,9 +55,17 @@ $('.time-block').each(function () {
     }
 })
 
-
 // Add event listener or onclick to save then save to localStorage
+$('.description').each(function() {
+    localStorage.getItem($(this).parent().attr('id'));
+})
 
+
+saveButton.on("click", function () {
+    var toDo = $(this).sublings('.description').val()
+    var dayHr = $(this).parent().attr('id')
+    localStorage.setItem(dayHr, toDo)
+});
 
 
 
