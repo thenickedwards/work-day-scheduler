@@ -1,65 +1,39 @@
-console.log ("Hello World!")
+console.log("Hello World!")
 
 var timeBlocks = $('#timeblocks');
-var currentHour;
-
+var currentHour = parseInt(moment().format("H"));
 var currentDay = $('#currentDay');
-
-
+var saveIcon = `<i class="fas fa-save"></i>`
 
 
 // Display current day and time
 function displayDayTime() {
-    setInterval(function() {
-        currentDay = moment ();
+    setInterval(function () {
+        currentDay = moment();
         $('#currentDay').text(currentDay.format("[Right now it's:] dddd, MMMM Do, YYYY h:mm:ss a"));
     }, 1000);
 }
 
 displayDayTime();
 
-
-
-
-
-// Create hour of day, text area for tasks, and save button (adjusts for AM/PM)
-function createPlanner () {
+// Create hour of day (adjusts for AM/PM), text area for tasks, and save button
+function createPlanner() {
     for (i = 9; i < 18; i++) {
-
-        // if (i > 12) {
-        //     var hourRow = `
-        //         <tr id="${"hour-"+i}" class= "row time-block">
-        //         <td><div class="hour">${i-12 + " PM"}</div></td>
-        //         <td><textarea name="" id="" class="description"></textarea></td>
-        //         <td><button type="button" class="btn btn-primary saveBtn">💾</button></td>
-        //         </tr>`
-
-        //     $('#timeblocks').append(hourRow)
-        // } else {
-        //     var hourRow = `
-        //         <tr id="${"hour-"+i}" class= "row time-block">
-        //         <td><div class="hour">${i + " AM"}</div></td>
-        //         <td><textarea name="" id="" class="description"></textarea></td>
-        //         <td><button type="button" class="btn btn-primary saveBtn">💾</button></td>
-        //         </tr>`
-
-        //     $('#timeblocks').append(hourRow)
-
         if (i > 12) {
             var hourRow = `
-                <div id="${"hour-"+i}" class= "row time-block">
-                    <div class="hour">${i-12 + " PM"}</div>
-                    <textarea name="" id="" class="description"></textarea>
-                    <button type="button" class="btn btn-primary saveBtn">💾</button>
+                <div id="${i}" class= "row time-block">
+                    <div class="hour col-1">${i - 12 + " PM"}</div>
+                    <textarea name="" id="" class="description col-10"></textarea>
+                    <button type="button" class="btn btn-primary col-1 saveBtn">${saveIcon}</button>
                 </div>`
 
             $('#timeblocks').append(hourRow)
         } else {
             var hourRow = `
-                <div id="${"hour-"+i}" class= "row time-block">
-                    <div class="hour">${i + " AM"}</div>
-                    <textarea name="" id="" class="description"></textarea>
-                    <button type="button" class="btn btn-primary saveBtn">💾</button>
+                <div id="${i}" class= "row time-block">
+                    <div class="hour col-1">${i + " AM"}</div>
+                    <textarea name="" id="" class="description col-10"></textarea>
+                    <button type="button" class="btn btn-primary col-1 saveBtn">${saveIcon}</button>
                 </div>`
 
             $('#timeblocks').append(hourRow)
@@ -69,6 +43,23 @@ function createPlanner () {
 }
 
 createPlanner();
+
+// If hour is current hour, highlight
+$('.time-block').each(function () {
+    if ($(this).attr("id") > currentHour) {
+        $(this).addClass("future")
+    } else if ($(this).attr("id") < currentHour) {
+        $(this).addClass("past")
+    } else {
+        $(this).addClass("present")
+    }
+})
+
+
+// Add event listener or onclick to save then save to localStorage
+
+
+
 
 // TO DO's
 // Create timeblocks with hr, texarea, save button
