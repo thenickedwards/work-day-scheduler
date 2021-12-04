@@ -5,7 +5,6 @@ var currentHour = parseInt(moment().format("H"));
 var currentDay = $('#currentDay');
 var saveIcon = `<i class="fas fa-save"></i>`
 
-
 // Display current day and time
 function displayDayTime() {
     setInterval(function () {
