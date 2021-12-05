@@ -1,10 +1,14 @@
+// $(document).ready(function() {
+
 console.log("Hello World!")
+
 
 var timeBlocks = $('#timeblocks');
 var currentHour = parseInt(moment().format("H"));
 var currentDay = $('#currentDay');
 var saveIcon = `<i class="fas fa-save"></i>`
-var saveButton = $('.saveBtn');
+
+// var saveButton = $('<button>');
 
 // Display current day and time
 function displayDayTime() {
@@ -24,7 +28,7 @@ function createPlanner() {
                 <div id="${i}" class= "row time-block">
                     <div class="hour col-1">${i - 12 + " PM"}</div>
                     <textarea name="" id="" class="description col-10"></textarea>
-                    <button type="button" class="btn btn-primary col-1 saveBtn" onclick="saveTasks()">${saveIcon}</button>
+                    <button type="button" class="btn btn-primary col-1 saveBtn">${saveIcon}</button>
                 </div>`
             
             $('#timeblocks').append(hourRow)
@@ -33,7 +37,7 @@ function createPlanner() {
                 <div id="${i}" class= "row time-block">
                     <div class="hour col-1">${i + " AM"}</div>
                     <textarea name="" id="" class="description col-10"></textarea>
-                    <button type="button" class="btn btn-primary col-1 saveBtn" onclick="saveTasks()">${saveIcon}</button>
+                    <button type="button" class="btn btn-primary col-1 saveBtn">${saveIcon}</button>
                 </div>`
 
             $('#timeblocks').append(hourRow)
@@ -62,25 +66,41 @@ $('.time-block').each(function () {
 // Add event listener or onclick to save then save to localStorage
 $('.description').each(function() {
     localStorage.getItem($(this).parent().attr('id'));
-})
+});
 
+var saveButton = $('.saveBtn');
 
-
-function saveTasks() {
+saveButton.on("click", function() {
     console.log("I was clicked!");
 
-    // var toDo = $('.description').each.siblings().value;
-    
-    var toDo = $(this).siblings('.description').value;
-    // console.log("toDo is" + toDo);
-
     var dayHr = $(this).parent().attr('id');
-
-    console.log ("toDo is "+ toDo)
+    var toDo = $(this).siblings('.description').value;
+    
     console.log ("dayHr is "+ dayHr)
+    console.log ("toDo is "+ toDo)
 
-    // localStorage.setItem(dayHr, toDo);
-}
+    localStorage.setItem(dayHr, toDo);
+
+
+});
+
+
+// function saveTasks() {
+//     console.log("I was clicked!");
+
+    
+//     // var toDo = $('.description').each.siblings().value;
+
+//     // var toDo = $(this).siblings('.description').value;
+//     //  console.log("toDo is" + toDo);
+
+//     // var dayHr = $(this).parent().attr('id');
+
+//     // console.log ("toDo is "+ toDo)
+//     // console.log ("dayHr is "+ dayHr)
+
+//     // localStorage.setItem(dayHr, toDo);
+// }
 
 
 // console.log(localStorage);
@@ -89,3 +109,5 @@ function saveTasks() {
 // Create timeblocks with hr, texarea, save button
 // Make textareas writtable, storable
 // Save planning to localStorage when button pressed
+
+// });
