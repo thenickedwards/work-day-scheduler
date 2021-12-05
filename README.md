@@ -17,7 +17,7 @@ URL for published page: https://thenickedwards.github.io/work-day-scheduler/
 
 URL for GitHub repo: https://github.com/thenickedwards/work-day-scheduler
 
-## Screenshots of Page(s)
+## Screenshots of Page
 ![Screenshot of Work Day Scheduler webpage including local storage.](planner_screenshot.png)
 
 Thank you for reading the readme!
