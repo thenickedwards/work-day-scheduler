@@ -24,7 +24,7 @@ function createPlanner() {
                 <div id="${i}" class= "row time-block">
                     <div class="hour col-1">${i - 12 + " PM"}</div>
                     <textarea name="" id="" class="description col-10"></textarea>
-                    <button type="button" class="btn btn-primary col-1 saveBtn">${saveIcon}</button>
+                    <button type="button" class="btn btn-primary col-1 saveBtn" onclick="saveTasks()">${saveIcon}</button>
                 </div>`
             
             $('#timeblocks').append(hourRow)
@@ -33,7 +33,7 @@ function createPlanner() {
                 <div id="${i}" class= "row time-block">
                     <div class="hour col-1">${i + " AM"}</div>
                     <textarea name="" id="" class="description col-10"></textarea>
-                    <button type="button" class="btn btn-primary col-1 saveBtn">${saveIcon}</button>
+                    <button type="button" class="btn btn-primary col-1 saveBtn" onclick="saveTasks()">${saveIcon}</button>
                 </div>`
 
             $('#timeblocks').append(hourRow)
@@ -61,14 +61,22 @@ $('.description').each(function() {
 })
 
 
-saveButton.on("click", function () {
-    var toDo = $(this).sublings('.description').val()
-    var dayHr = $(this).parent().attr('id')
-    localStorage.setItem(dayHr, toDo)
-    
-});
 
-console.log(localStorage);
+function saveTasks(event) {
+    event.preventDefault();
+    console.log("I was clicked!");
+
+    var toDo = $('.description').siblings().value;
+    console.log("toDo is" + toDo);
+    // var toDo = $(this).siblings('.description').value;
+    // console.log("toDo is" + toDo);
+
+    // var dayHr = $(this).parent().attr('id');
+    localStorage.setItem("hello", "world");
+}
+
+
+// console.log(localStorage);
 
 // TO DO's
 // Create timeblocks with hr, texarea, save button
