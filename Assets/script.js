@@ -1,14 +1,9 @@
-// $(document).ready(function() {
-
 console.log("Hello World!")
-
 
 var timeBlocks = $('#timeblocks');
 var currentHour = parseInt(moment().format("H"));
 var currentDay = $('#currentDay');
 var saveIcon = `<i class="fas fa-save"></i>`
-
-// var saveButton = $('<button>');
 
 // Display current day and time
 function displayDayTime() {
@@ -59,55 +54,17 @@ $('.time-block').each(function () {
     }
 })
 
-
-
-
-
-// Add event listener or onclick to save then save to localStorage
+// Retireve/render data previously saved to localStorage
 $('.description').each(function() {
-    localStorage.getItem($(this).parent().attr('id'));
+    var storedTasks = localStorage.getItem($(this).parent().attr('id'));
+    $(this).val(storedTasks);
 });
 
+// Store textarea data to localStorage on click
 var saveButton = $('.saveBtn');
 
 saveButton.on("click", function() {
-    console.log("I was clicked!");
-
     var dayHr = $(this).parent().attr('id');
-    var toDo = $(this).siblings('.description').value;
-    
-    console.log ("dayHr is "+ dayHr)
-    console.log ("toDo is "+ toDo)
-
+    var toDo = $(this).siblings('.description').val();
     localStorage.setItem(dayHr, toDo);
-
-
 });
-
-
-// function saveTasks() {
-//     console.log("I was clicked!");
-
-    
-//     // var toDo = $('.description').each.siblings().value;
-
-//     // var toDo = $(this).siblings('.description').value;
-//     //  console.log("toDo is" + toDo);
-
-//     // var dayHr = $(this).parent().attr('id');
-
-//     // console.log ("toDo is "+ toDo)
-//     // console.log ("dayHr is "+ dayHr)
-
-//     // localStorage.setItem(dayHr, toDo);
-// }
-
-
-// console.log(localStorage);
-
-// TO DO's
-// Create timeblocks with hr, texarea, save button
-// Make textareas writtable, storable
-// Save planning to localStorage when button pressed
-
-// });
