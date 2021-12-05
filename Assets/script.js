@@ -55,6 +55,10 @@ $('.time-block').each(function () {
     }
 })
 
+
+
+
+
 // Add event listener or onclick to save then save to localStorage
 $('.description').each(function() {
     localStorage.getItem($(this).parent().attr('id'));
@@ -62,17 +66,20 @@ $('.description').each(function() {
 
 
 
-function saveTasks(event) {
-    event.preventDefault();
+function saveTasks() {
     console.log("I was clicked!");
 
-    var toDo = $('.description').siblings().value;
-    console.log("toDo is" + toDo);
-    // var toDo = $(this).siblings('.description').value;
+    // var toDo = $('.description').each.siblings().value;
+    
+    var toDo = $(this).siblings('.description').value;
     // console.log("toDo is" + toDo);
 
-    // var dayHr = $(this).parent().attr('id');
-    localStorage.setItem("hello", "world");
+    var dayHr = $(this).parent().attr('id');
+
+    console.log ("toDo is "+ toDo)
+    console.log ("dayHr is "+ dayHr)
+
+    // localStorage.setItem(dayHr, toDo);
 }
 
 
