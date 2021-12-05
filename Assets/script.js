@@ -65,9 +65,10 @@ saveButton.on("click", function () {
     var toDo = $(this).sublings('.description').val()
     var dayHr = $(this).parent().attr('id')
     localStorage.setItem(dayHr, toDo)
+    
 });
 
-
+console.log(localStorage);
 
 // TO DO's
 // Create timeblocks with hr, texarea, save button
