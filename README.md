@@ -21,3 +21,5 @@ URL for GitHub repo: https://github.com/thenickedwards/work-day-scheduler
 ![Screenshot of Work Day Scheduler webpage including local storage.](planner_screenshot.png)
 
 Thank you for reading the readme!
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
